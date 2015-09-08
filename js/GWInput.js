@@ -72,6 +72,7 @@ function init() {
 		slider: true,
 		sliderStyle: "small", //use "small" for compact version, "large" for long slider version
 		logo:false,
+		showAttribution:false,
 		infoWindow: popup
 	});
 	
@@ -751,7 +752,7 @@ function init() {
 					dojo.setStyle(toggleDiv, "paddingLeft", "15px");
 					//TESTING
 					if(layer.infoButtonText){
-						var infoButton = dojo.create('div', {innerHTML: '<img class="infoButton" title="Layer Group Explanation" style="height: 15px; width:15px; cursor:pointer;" src="images/infoGraphic.png" />'}, toggleDiv); //WORKS to add HTML div
+						var infoButton = dojo.create('div', {innerHTML: '<img class="infoButton" title="Layer Group Explanation" src="images/infoGraphic.png" />'}, toggleDiv); //WORKS to add HTML div
 						dojo.setStyle(infoButton, "float", "right");
 						dojo.connect(infoButton, "onclick", function(evt){
 
