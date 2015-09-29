@@ -27,22 +27,6 @@
 	max-height: 400px;
 	overflow-y: auto;
 }
-
-/*badRiverEdits*/
-@media screen and (max-height:900px){
-	#availableLayers > #collapsingContainerContent{
-		max-height: 200px;
-	}	
-}
-	
-
-@media screen and (max-height:600px){
-	#availableLayers > #collapsingContainerContent{
-		max-height: 100px;
-	}	
-}
-	
-	
 .collapsingContainerIcon {	
 	font-size: 1.5em;
 	font-weight: bold;
@@ -249,37 +233,10 @@
 	padding: 10px;
 }
 
-.linksDiv .infoBox{
+.linksDiv{
 	z-index: 3;
 	position: fixed;
 }
-
-.claro .dijitDialogTitleBar{
-	background-color:#59595C;
-	background-image: none;
-	border:none;
-}
-
-.claro .dijitDialogTitle{
-		color: #F37A49;
-}
-
-/*keeps close button icon anchored to top right of dialog*/
-.claro .dijitDialogCloseIcon{
-	top: 5px;
-}
-
-.claro .dijitDialog{
-	border: 1px solid #59595C;
-	border-radius:5px;
-
-}
-
-.claro .dijitDialogPaneContent{
-	background-color: #CCC;
-	color: #59595C;
-}
-
 .loadingScreenRoot{
 	position:absolute;
 	top:0;

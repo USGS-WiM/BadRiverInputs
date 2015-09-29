@@ -1,16 +1,16 @@
-//Copyright 2014 USGS Wisconsin Internet Mapping(WiM)
-//Author: Erik Myers
-//Template Created: May 17th, 2013 by WiM JS Dev Team
+//Copyright 2013 USGS Wisconsin Internet Mapping(WiM)
+//Author: WiM JS Dev Team
+//Created: May 17th, 2013	
 
+//This template has been commented heavily for development purposes. Please delete comments before publishing live mapper code.
+//Below are all the dojo.require statements needed for this template mapper. These statements import esri and dijit out-of-box functionality. At bottom are custom wimjits being included.
+//This list will vary as features are added to mappers and different Dojo, Esri, or WiM tools are used. 
 
 //04.03.2014 - NE - Added new allLayers object with all map layer info. new functions to automate adding of layers and building of available map layers box and explanation. 
 //07.16.2013 - NE - Add functionality for adding icon and execute zoom to scale.
 //06.19.2013 - NE - Updated to create lat/lng scale bar programmatically after map is created and ready.
 //06.18.2013 - TR - Added color style to USGSLinks <a> tags
 //06.03.2013 - ESM - Adds function to build and display usgs links on user logo click
-//12.03.2014 -ESM -  Adds infoButtons and explanation functionality to TOC main layout
-//12.03.2014 -ESM -  Adds all layers and data with descriptions and functionality
-//12.03.2014 -ESM -  Adds identifyTask and custom popup rendering
 
 dojo.require("esri.arcgis.utils");
 dojo.require("esri.dijit.Popup");
@@ -35,7 +35,6 @@ dojo.require("wim.ExtentNav");
 dojo.require("wim.LatLngScale");
 dojo.require("wim.RefreshScreen");
 dojo.require("wim.LinksBox");
-dojo.require("wim.LoadingScreen");
 
 
 //various global variables are set here (Declare here, instantiate below)     
@@ -72,7 +71,6 @@ function init() {
 		slider: true,
 		sliderStyle: "small", //use "small" for compact version, "large" for long slider version
 		logo:false,
-		showAttribution:false,
 		infoWindow: popup
 	});
 	
@@ -103,7 +101,7 @@ function init() {
 				"arcOptions": {
 					"visible": false, 
 					"opacity": 0.5,
-					"id":"l5_log_kz"
+					"id":"logVHC5"
 				},
 				"wimOptions": {
 					"type": "layer",
@@ -116,7 +114,7 @@ function init() {
 				"arcOptions": {
 					"visible": false, 
 					"opacity": 0.5,
-					"id":"l4_log_kz"
+					"id":"logVHC4"
 				},
 				"wimOptions": {
 					"type": "layer",
@@ -129,7 +127,7 @@ function init() {
 				"arcOptions": {
 					"visible": false, 
 					"opacity": 0.5,
-					"id":"l3_log_kz"
+					"id":"logVHC3"
 				},
 				"wimOptions": {
 					"type": "layer",
@@ -142,7 +140,7 @@ function init() {
 				"arcOptions": {
 					"visible": false, 
 					"opacity": 0.5,
-					"id":"l1_log_kz"
+					"id":"logVHC1_2"
 				},
 				"wimOptions": {
 					"type": "layer",
@@ -153,7 +151,7 @@ function init() {
 			"wimOptions": {
 				"type":"heading",
 				"includeInLayerList": true,
-				"infoButton": "Vertical hydraulic conductivity values interpolated from pilot points (log scale)."
+				"infoButton": "Vertical hydraulic conductivity values interpolated from pilot points (log scale)"
 			}
 		},"Layer 5 log horizontal hydraulic conductivity (Kh)" : {
 				"url": servicesURL,
@@ -161,7 +159,7 @@ function init() {
 				"arcOptions": {
 					"visible": false, 
 					"opacity": 0.5,
-					"id":"l5_log_kx"
+					"id":"logHHC5"
 				},
 				"wimOptions": {
 					"type": "layer",
@@ -174,7 +172,7 @@ function init() {
 				"arcOptions": {
 					"visible": false, 
 					"opacity": 0.5,
-					"id":"l4_log_kx"
+					"id":"logHHC4"
 				},
 				"wimOptions": {
 					"type": "layer",
@@ -187,7 +185,7 @@ function init() {
 				"arcOptions": {
 					"visible": false, 
 					"opacity": 0.5,
-					"id":"l3_log_kx"
+					"id":"logHHC3"
 				},
 				"wimOptions": {
 					"type": "layer",
@@ -200,7 +198,7 @@ function init() {
 				"arcOptions": {
 					"visible": false, 
 					"opacity": 0.5,
-					"id":"l1_log_kx"
+					"id":"logHHC1_2"
 				},
 				"wimOptions": {
 					"type": "layer",
@@ -211,7 +209,7 @@ function init() {
 			"wimOptions": {
 				"type":"heading",
 				"includeInLayerList": true,
-				"infoButton": "Horizontal hydraulic conductivity values interpolated from pilot points (log scale)."
+				"infoButton": "Horizontal hydraulic conductivity values interpolated from pilot points (log scale)"
 			}
 		},"Layer 5 vertical hydraulic conductivity (Kv)" : {
 				"url": servicesURL,
@@ -219,7 +217,7 @@ function init() {
 				"arcOptions": {
 					"visible": false, 
 					"opacity": 0.5,
-					"id":"l5_kz"
+					"id":"VHC5"
 				},
 				"wimOptions": {
 					"type": "layer",
@@ -232,7 +230,7 @@ function init() {
 				"arcOptions": {
 					"visible": false, 
 					"opacity": 0.5,
-					"id":"l4_kz"
+					"id":"VHC4"
 				},
 				"wimOptions": {
 					"type": "layer",
@@ -245,7 +243,7 @@ function init() {
 				"arcOptions": {
 					"visible": false, 
 					"opacity": 0.5,
-					"id":"l3_kz"
+					"id":"VHC3"
 				},
 				"wimOptions": {
 					"type": "layer",
@@ -258,7 +256,7 @@ function init() {
 				"arcOptions": {
 					"visible": false, 
 					"opacity": 0.5,
-					"id":"l1_kz"
+					"id":"VHC1_2"
 				},
 				"wimOptions": {
 					"type": "layer",
@@ -269,7 +267,7 @@ function init() {
 			"wimOptions": {
 				"type":"heading",
 				"includeInLayerList": true,
-				"infoButton": "Vertical hydraulic conductivity values interpolated from pilot points."
+				"infoButton": "Vertical hydraulic conductivity values interpolated from pilot points"
 			}
 		}, "Layer 5 horizontal hydraulic conductivity (Kh)" : {
 				"url": servicesURL,
@@ -277,7 +275,7 @@ function init() {
 				"arcOptions": {
 					"visible": false, 
 					"opacity": 0.5,
-					"id":"l5_kx"
+					"id":"HHC5"
 				},
 				"wimOptions": {
 					"type": "layer",
@@ -290,7 +288,7 @@ function init() {
 				"arcOptions": {
 					"visible": false, 
 					"opacity": 0.5,
-					"id":"l4_kx"
+					"id":"HHC4"
 				},
 				"wimOptions": {
 					"type": "layer",
@@ -303,7 +301,7 @@ function init() {
 				"arcOptions": {
 					"visible": false, 
 					"opacity": 0.5,
-					"id":"l3_kx"
+					"id":"HHC3"
 				},
 				"wimOptions": {
 					"type": "layer",
@@ -316,7 +314,7 @@ function init() {
 				"arcOptions": {
 					"visible": false, 
 					"opacity": 0.5,
-					"id":"l1_kx"
+					"id":"HHC1_2"
 				},
 				"wimOptions": {
 					"type": "layer",
@@ -327,15 +325,15 @@ function init() {
 			"wimOptions": {
 				"type":"heading",
 				"includeInLayerList": true,
-				"infoButton": "Horizontal hydraulic conductivity values interpolated from pilot points."
+				"infoButton": "Horizontal hydraulic conductivity values interpolated from pilot points"
 			}
 		}, "Recharge" : {
 				"url": servicesURL,
 				"visibleLayers": [26], 
 				"arcOptions": {
-					"visible": true, 
+					"visible": false, 
 					"opacity": 0.5,
-					"id":"_rch"
+					"id":"recharge"
 				},
 				"wimOptions": {
 					"type": "layer",
@@ -346,7 +344,7 @@ function init() {
 			"wimOptions": {
 				"type":"heading",
 				"includeInLayerList": true,
-				"infoButton": "Recharge input to the model converted to inches per year."
+				"infoButton": "Recharge input to the model, converted to in./yr."
 			}
 		},"Layer 5 dry cells" : {
 				"url": servicesURL,
@@ -354,7 +352,7 @@ function init() {
 				"arcOptions": {
 					"visible": false, 
 					"opacity": 0.5,
-					"id":"L5_dry"
+					"id":"dry5"
 				},
 				"wimOptions": {
 					"type": "layer",
@@ -367,7 +365,7 @@ function init() {
 				"arcOptions": {
 					"visible": false, 
 					"opacity": 0.5,
-					"id":"L4_dry"
+					"id":"dry4"
 				},
 				"wimOptions": {
 					"type": "layer",
@@ -380,7 +378,7 @@ function init() {
 				"arcOptions": {
 					"visible": false, 
 					"opacity": 0.5,
-					"id":"L3_dry"
+					"id":"dry3"
 				},
 				"wimOptions": {
 					"type": "layer",
@@ -393,7 +391,7 @@ function init() {
 				"arcOptions": {
 					"visible": false, 
 					"opacity": 0.5,
-					"id":"L2_dry"
+					"id":"dry2"
 				},
 				"wimOptions": {
 					"type": "layer",
@@ -406,7 +404,7 @@ function init() {
 				"arcOptions": {
 					"visible": false, 
 					"opacity": 0.5,
-					"id":"L1_dry"
+					"id":"dry1"
 				},
 				"wimOptions": {
 					"type": "layer",
@@ -417,7 +415,7 @@ function init() {
 			"wimOptions": {
 				"type":"heading",
 				"includeInLayerList": true,
-				"infoButton": "Model cells that are above the simulated water table elevation."
+				"infoButton": "Model Cells that are above the simulated water table elevation"
 			}
 		},"Layer 5 zones" : {
 				"url": servicesURL,
@@ -425,7 +423,7 @@ function init() {
 				"arcOptions": {
 					"visible": false, 
 					"opacity": 0.5,
-					"id":"kzone511"
+					"id":"zones5"
 				},
 				"wimOptions": {
 					"type": "layer",
@@ -438,7 +436,7 @@ function init() {
 				"arcOptions": {
 					"visible": false, 
 					"opacity": 0.5,
-					"id":"kzone422"
+					"id":"zones4"
 				},
 				"wimOptions": {
 					"type": "layer",
@@ -451,7 +449,7 @@ function init() {
 				"arcOptions": {
 					"visible": false, 
 					"opacity": 0.5,
-					"id":"kzone311"
+					"id":"zones3"
 				},
 				"wimOptions": {
 					"type": "layer",
@@ -464,7 +462,7 @@ function init() {
 				"arcOptions": {
 					"visible": false, 
 					"opacity": 0.5,
-					"id":"kzone111"
+					"id":"zones1_2"
 				},
 				"wimOptions": {
 					"type": "layer",
@@ -483,7 +481,7 @@ function init() {
 				"arcOptions": {
 					"visible": false, 
 					"opacity": 0.5,
-					"id":"BR_SFR_with_WI_hydro"
+					"id":"Streamflow"
 				},
 				"wimOptions": {
 					"type": "layer",
@@ -495,7 +493,7 @@ function init() {
 			"wimOptions": {
 				"type":"heading",
 				"includeInLayerList": true,
-				"infoButton": "Each polygon in this feature is a model cell that has a streamflow routing (SFR) boundary condition.  http://pubs.usgs.gov/tm/2006/tm6A13/"
+				"infoButton": "Each polygon in this feature is a model cell that has an SFR (streamflow routing) boundary condition."
 			}
 		}, "Overland flow catchments" : {
 				"url": servicesURL,
@@ -503,7 +501,7 @@ function init() {
 				"arcOptions": {
 					"visible": false, 
 					"opacity": 0.5,
-					"id":"MFgrid_segments_dissolved"
+					"id":"overlandFlow"
 				},
 				"wimOptions": {
 					"type": "layer",
@@ -515,7 +513,7 @@ function init() {
 			"wimOptions": {
 				"type":"heading",
 				"includeInLayerList": true,
-				"infoButton": "Each polygon is a catchment derived from NHDPlus. Each catchment was associated with a stream segment (based on which segment had the highest number of reaches within the catchment). All groundwater discharging to the surface in that catchment is routed as overland flow to that stream segment."
+				"infoButton": "Each polygon is a catchment derived from NHDPlus. Each of these catchment was associated with a stream segment (based on which segment had the highest number of reaches within the catchment). All groundwater discharging to the surface in that catchment is routed as overland flow to that stream segment."
 			}
 		}, "Pilot points in layer 1" : {
 				"url": servicesURL,
@@ -523,7 +521,7 @@ function init() {
 				"arcOptions": {
 					"visible": false, 
 					"opacity": 0.95,
-					"id":"Pilot points in layer 1"
+					"id":"pilotPoints1"
 				},
 				"wimOptions": {
 					"type": "layer",
@@ -540,7 +538,7 @@ function init() {
 				"arcOptions": {
 					"visible": false, 
 					"opacity": 0.95,
-					"id":"Pilot points in layers 3-5"
+					"id":"pilotPoints3_5"
 				},
 				"wimOptions": {
 					"type": "layer",
@@ -555,7 +553,7 @@ function init() {
 			"wimOptions": {
 				"type":"radioParent",
 				"includeInLayerList": true,
-				"infoButton": "Hydraulic conductivity values were interpolated between pilot points within these zones, which indicate major geologic units. The zones in layer 1 are different because they represent surficial glacial deposits. Layer 2 was assigned the same hydraulic conductivity values as layer 1. The zones in layers 3-5 represent major bedrock units; they are only slightly different because of dips in the units (which cause them to be offset between layers).",
+				"infoButton": "Points indicating the location and value of each pilot point in Layer 1 same, but for layers 3-5 (multiple overlapping points)",
 				"layerOptions": {
 					"selectorType":"radioParent",
 					"radioGroup": "pilotPoint"
@@ -567,7 +565,7 @@ function init() {
 				"arcOptions": {
 					"visible": false, 
 					"opacity": 0.85,
-					"id":"identifiability_L4kz"
+					"id":"4KV"
 				},
 				"wimOptions": {
 					"type": "layer",
@@ -584,7 +582,7 @@ function init() {
 				"arcOptions": {
 					"visible": false, 
 					"opacity": 0.85,
-					"id":"identifiability_L4kh"
+					"id":"4KH"
 				},
 				"wimOptions": {
 					"type": "layer",
@@ -601,7 +599,7 @@ function init() {
 				"arcOptions": {
 					"visible": false, 
 					"opacity": 0.85,
-					"id":"identifiability_L3kz"
+					"id":"3KV"
 				},
 				"wimOptions": {
 					"type": "layer",
@@ -618,7 +616,7 @@ function init() {
 				"arcOptions": {
 					"visible": false, 
 					"opacity": 0.85,
-					"id":"identifiability_L3kh"
+					"id":"3KH"
 				},
 				"wimOptions": {
 					"type": "layer",
@@ -635,7 +633,7 @@ function init() {
 				"arcOptions": {
 					"visible": false, 
 					"opacity": 0.85,
-					"id":"identifiability_L1kz"
+					"id":"1KV"
 				},
 				"wimOptions": {
 					"type": "layer",
@@ -652,7 +650,7 @@ function init() {
 				"arcOptions": {
 					"visible": true, 
 					"opacity": 0.85,
-					"id":"identifiability_L1kh"
+					"id":"1KH"
 				},
 				"wimOptions": {
 					"type": "layer",
@@ -668,11 +666,10 @@ function init() {
 				"type":"radioParent",
 				"includeInLayerList": true,
 				"visible":true,
-				"infoButton": "During model calibration, hydraulic conductivity is estimated at each pilot point. Each model cell is then populated with a hydraulic conductivity value by interpolation between pilot points. The estimation of K at the pilot point[s] is based on the fit between simulated and observed baseflows and water levels (K is adjusted to achieve the best fit). Identifiability measures the extent to which an individual pilot point is 'informed' by nearby observations. Pilot points that are well informed have an identifiabilitiy of 1.0. Values near zero indicate pilot points that do not have a significant effect on model results at the observation locations, and therefore cannot be informed by model fit.",
+				"infoButton": "During model calibration, hydraulic conductivity is estimated at each pilot point. Each model cell is then populated with a hydraulic conductivity value by interpolation between pilot points. The estimation of K at the pilot points is based on the fit between model results and observed baseflows and water levels (K is adjusted to achieve the best fit). Identifiability measures the extent to which an individual pilot point is 'informed' by nearby observations. Pilot points that are well informed have an ident. of 1.0. Values near zero indicate pilot points that don't have a significant effect on model results at the observation locations (and therefore can't be informed by model fit).",
 				"layerOptions": {
 					"selectorType":"radioParent",
-					"radioGroup": "pilotPointIdent",
-					"checked": true
+					"radioGroup": "pilotPointIdent"
 				},
 			}
 		}	
@@ -689,8 +686,8 @@ function init() {
 		},"legendDiv");
 		legend.startup();
 		
-		//IMPORTANT: IF REFERENCE LAYER NAMES CHANGE YOU NEED TO EDIT THIS OR IT WILL BOMB
-		layerInfos = map.getLayer('identifiability_L1kh').layerInfos;
+		layerInfos = map.getLayer('zones1_2').layerInfos;
+		var test;
 
 		//this counter to track first and last of items in legendLayers
 		var i = 0;
@@ -708,7 +705,7 @@ function init() {
 					var radioParentCheck = new dijit.form.CheckBox({
 						name: "radioParentCheck" + layer.group,
 						id: "radioParentCheck_" + layer.group,
-						checked: layer.checked,
+
 						params: {group: layer.group},
 						onChange: function(evt){
 							var radChildLayers = [];
@@ -743,7 +740,6 @@ function init() {
 							/*var checkLayer = map.getLayer(this.value);
 							checkLayer.setVisibility(!checkLayer.visible);
 							this.checked = checkLayer.visible;	*/
-
 						}
 					});
 					var toggleDiv = dojo.doc.createElement("div");			
@@ -752,7 +748,7 @@ function init() {
 					dojo.setStyle(toggleDiv, "paddingLeft", "15px");
 					//TESTING
 					if(layer.infoButtonText){
-						var infoButton = dojo.create('div', {innerHTML: '<img class="infoButton" title="Layer Group Explanation" src="images/infoGraphic.png" />'}, toggleDiv); //WORKS to add HTML div
+						var infoButton = dojo.create('div', {innerHTML: '<img class="infoButton" title="Layer Group Explanation" style="height: 15px; width:15px; cursor:pointer;" src="images/infoGraphic.png" />'}, toggleDiv); //WORKS to add HTML div
 						dojo.setStyle(infoButton, "float", "right");
 						dojo.connect(infoButton, "onclick", function(evt){
 
@@ -843,7 +839,7 @@ function init() {
 						var scale = allLayers[layerName].wimOptions.zoomScale;
 						var zoomImage = dojo.doc.createElement("div");
 						zoomImage.id = 'zoom' + layer.layer.id;
-						zoomImage.innerHTML = '<img id="zoomImage" title="zoom to visible scale" style="height: 18px;width: 18px; cursor: pointer" src="images/zoom.gif" />';
+						zoomImage.innerHTML = '<img id="zoomImage" title="zoom to visible scale" style="height: 18px;width: 18px" src="images/zoom.gif" />';
 						dojo.connect(zoomImage, "click", function() {
 							if (map.getScale() > scale) {
 								map.setScale(scale);;
@@ -924,7 +920,6 @@ function init() {
 			$("#legendDiv").show();
 		}, 1000);
 		
-
 	});
 	
 	addAllLayers();
@@ -932,47 +927,22 @@ function init() {
 	//OPTIONAL: the below remaining lines within the init function are for performing an identify task on a layer in the mapper. 
 	// the following 7 lines establish an IdentifyParameters object(which is an argument for an identifyTask.execute method)and specifies the criteria used to identify features. 
 	// the constructor of the identifyTask is especially important. the service URL there should match that of the layer from which you'd like to identify.
-	//var visibleLayers = [1,2,3,4,5,6];
-
 	identifyParams = new esri.tasks.IdentifyParameters();
     identifyParams.tolerance = 8;
     identifyParams.returnGeometry = true;
-    identifyParams.layerIds = visibleLayers;
     identifyParams.layerOption = esri.tasks.IdentifyParameters.LAYER_OPTION_VISIBLE;
     identifyParams.width  = map.width;
     identifyParams.height = map.height;
+    identifyParams.layerIds = [1,2,3,4,5,6,8,9,11,13, 43,44,45,46,47];
     identifyTask = new esri.tasks.IdentifyTask(servicesURL);
 
 	//OPTIONAL: the following function carries out an identify task query on a layer and returns attributes for the feature in an info window according to the 
 	//InfoTemplate defined below. It is also possible to set a default info window on the layer declaration which will automatically display all the attributes 
 	//for the layer in the order they come from the table schema. This code below creates custom labels for each field and substitutes in the value using the notation ${[FIELD NAME]}. 
     function executeSiteIdentifyTask(evt) {
-    	//variables are reset for each click event
-    	var visibleLayers =[]; 
-    	var layersOnly =[];
-
-    	//remove non-spatial layers from the layerInfos array (i.e. heading/radioparents/etc)
-    	for (var i=0; i<layerInfos.length; i++){
-    		if (layerInfos[i].parentLayerId != -1){
-    			layersOnly.push(layerInfos[i]); //push entire layer info object into layersOnly array for SPATIAL LAYERS ONLY
-    		}
-    	}	
-
-    	//loop through to find only the currently visible spatial layers
-    	for (var i = 0; i < layersOnly.length; i++){
-    		if (map.getLayer(layersOnly[i].name).visible == true){
-    			visibleLayers.push(layersOnly[i].id);  //visible spatial layers only
-    		} else{
-    			continue;
-    		}
-    	}
-
-
-    	identifyParams.layerIds = visibleLayers; //set layer Id array to visibleLayers Variable
         identifyParams.geometry = evt.mapPoint;
         identifyParams.mapExtent = map.extent;
        
-       	//var layercheck = map.getLayersVisibleAtScale(map.getScale());
 	    // the deferred variable is set to the parameters defined above and will be used later to build the contents of the infoWindow.
         var deferredResult = identifyTask.execute(identifyParams);
 
@@ -981,85 +951,33 @@ function init() {
             // dojo.map is used to set the variable feature to each result in the response array and apply the same template to each of those features, 
             return dojo.map(response, function(result) {
                 var feature = result.feature;
-                var layerid = String(result.layerId);
-                var popupLayerName = result.layerName;
                 feature.attributes.layerName = result.layerName;
-				
-                //pilot point identifiabilities
-				if (result.layerId <= 6) {
-                	var template = new esri.InfoTemplate("Pilot Point Identifiability",
-						"<b>Pilot Point Name</b>: ${parameter}<br/>" +
-						"<b>Identifiability</b>: ${ident}<br/>"+
-						"<b>Layer Name</b>: " + popupLayerName + "<br/>"+
-						"<b>Feature ID</b>: ${FID}<br/>");
-
-                //pilot points
-                } else if (result.layerId == 8 || result.layerId == 9){
-                	var template = new esri.InfoTemplate("Pilot Points",
-                		"<b>Layer Name</b>: " + popupLayerName + "<br/>"+
-						"<b>Type</b>: ${type}<br/>"+
-						"<b>Layer</b>: ${layer}<br/>" +
-	                    "<b>Point Name</b>: ${parameter}<br/>" +
-						"<b>Value</b>: ${value}<br/>" +
-						"<b>Zone</b>: ${zone}<br/>");
-
-                //Overland Flow
-                } else if (result.layerId == 11){
-                	var template = new esri.InfoTemplate("Overland Flow",
-						"<b>Segment</b>: ${segment}<br/>");
-                
-                //streamflow Routing Cells
-                }else if (result.layerId == 13){
-                	var template = new esri.InfoTemplate("Streamflow Routing Cells",
-						"<b>Reach</b>: ${reach}<br/>"+
-						"<b>Segment</b>: ${segment}<br/>" +
-	                    "<b>Elevation</b>: ${sb_elev}<br/>");
-                
-                //Recharge Raster
-                } else if (result.layerId == 26){
-                	var pixelValue = result.feature.attributes['Pixel Value'];
-                	var template = new esri.InfoTemplate("Recharge Pixel",
-                		"<b>Value: </b>" + pixelValue + " inches/year </br>");
-                
-                //Horizontal Hydraulic Conductivity
-                } else if (result.layerId >= 27 && result.layerId <= 31  ){
-                    var pixelValue = result.feature.attributes['Pixel Value'];
-                	var template = new esri.InfoTemplate("Results",
-                		"<b>Horizontal Hydraulic Conductivity: </b>" + pixelValue + " (feet/day) </br>");
-
-                //Vertical Hydraulic Conductivity
-                }	else if (result.layerId >= 32 && result.layerId <= 36  ){
-                    var pixelValue = result.feature.attributes['Pixel Value'];
-                	var template = new esri.InfoTemplate("Results",
-                		"<b>Vertical Hydraulic Conductivity: </b>" + pixelValue + " (feet/day) </br>");
-
-                //LOG Horizontal Hydraulic Conductivity
-                } else if (result.layerId >= 37 && result.layerId <= 41  ){
-                    var pixelValue = result.feature.attributes['Pixel Value'];
-                	var template = new esri.InfoTemplate("Results",
-                		"<b>Horizontal Hydraulic Conductivity: </b>" + pixelValue + " (log feet/day) </br>");
-
-                //LOG Vertical Hydraulic Conductivity
-                } else if (result.layerId >= 47 && result.layerId <= 46  ){
-                    var pixelValue = result.feature.attributes['Pixel Value'];
-                	var template = new esri.InfoTemplate("Results",
-                		"<b>Horizontal Hydraulic Conductivity: </b>" + pixelValue + " (log feet/day) </br>");
-
-                //handle other rasters that have result.layerName == "" || result.layerName == undefined
-                } else{
-                	var pixelValue = result.feature.attributes['Pixel Value'];
+                if (result.layerName == "" || result.layerName == undefined){
+                		var pixelValue = result.feature.attributes['Pixel Value'];
                 		var template = new esri.InfoTemplate("Raster Query",
-                			"<b>Pixel Value</b>: ${Pixel Value} </br>" +
-                			"<b>Layer Service ID<b>: " + layerid + "</br>");
-                }
+                			"<b>Pixel Value</b>: ${Pixel Value}");
 
- 
+                } else if (result.layerId <= 6 ){
+                	var template = new esri.InfoTemplate("Identifiability",
+						"<b>${FID}</b><br/>"+
+						"<b>Identifiability</b>: ${ident}<br/>" +
+	                    "<b>parameter</b>: ${param}<br/>" +
+						"<b>dir</b>: ${dir}<br/>" +
+						"<b>layer</b>: ${layer}<br/>");
+                } else{
+                	var template = new esri.InfoTemplate("other",
+                		"<b>${FID}</b>");
+                }
+                
+                
+				//set the customized template for displaying content in the info window. HTML tags can be used for styling.
+				// The string before the comma within the parens immediately following the constructor sets the title of the info window.
 
 				//ties the above defined InfoTemplate to the feature result returned from a click event	
-               	feature.setInfoTemplate(template);
+                feature.setInfoTemplate(template);
                 
 				//returns the value of feature, which is the result of the click event
-               	return feature;
+                return feature;
             });
         });
 		
@@ -1083,26 +1001,6 @@ function mapReady(map){
 	//Sets the globe button on the extent nav tool to reset extent to the initial extent.
 	dijit.byId("extentSelector").set("initExtent", map.extent);  
 	
-	dojo.style('loadingScreen', 'opacity', '0.75');
-	var loadingUpdate = dojo.connect(map, 'onUpdateStart', function(){
-		dojo.style('loadingScreen', 'visibility', 'visible');
-	});
-
-	dojo.connect(map,"onUpdateEnd",function(){
-		//commented out because of DropDown loading-- look at AllDone()
-		dojo.style('loadingScreen', 'visibility', 'hidden');
-		dojo.disconnect(loadingUpdate);
-	
-		dojo.connect(map, "onUpdateStart",function(){
-			dojo.style('refreshScreen', 'visibility', 'visible');
-		});
-		
-		dojo.connect(map, "onUpdateEnd", function(){
-			dojo.style('refreshScreen', 'visibility', 'hidden');
-		});
-	
-	});
-
 	//Create scale bar programmatically because there are some event listeners that can't be set until the map is created.
 	//Just uses a simple div with id "latLngScaleBar" to contain it
 	var latLngBar = new wim.LatLngScale({map: map}, 'latLngScaleBar');
@@ -1160,28 +1058,17 @@ function addAllLayers() {
 			
 			// ORIGINAL  layersObject.push({layer:null, type: "radioParent", title: layer, toggleType: "radioParent", group: radioGroup});
 			if (allLayers[layer].wimOptions.infoButton != undefined){
-				if (allLayers[layer].wimOptions.visible == true){
-					var checked = allLayers[layer].wimOptions.visible;
-					var infoButtonText = allLayers[layer].wimOptions.infoButton;
-					layersObject.push({layer:null, type: "radioParent", title: layer, toggleType: "radioParent", group: radioGroup, infoButtonText : infoButtonText, checked: checked});
-				} else{
-					var infoButtonText = allLayers[layer].wimOptions.infoButton;
-					layersObject.push({layer:null, type: "radioParent", title: layer, toggleType: "radioParent", group: radioGroup, infoButtonText : infoButtonText});
-				}
-				
+				var infoButtonText = allLayers[layer].wimOptions.infoButton;
+				layersObject.push({layer:null, type: "radioParent", title: layer, toggleType: "radioParent", group: radioGroup, infoButtonText : infoButtonText});
 			} else{
 				layersObject.push({layer:null, type: "radioParent", title: layer, toggleType: "radioParent", group: radioGroup});
-				if (allLayers[layer].wimOptions.visible == true){
-					var checked = allLayers[layer].wimOptions.visible;
-					layersObject.push({layer:null, type: "radioParent", title: layer, toggleType: "radioParent", group: radioGroup, checked: checked});
-				} else{
-					layersObject.push({layer:null, type: "radioParent", title: layer, toggleType: "radioParent", group: radioGroup});
-				}
 			}
 
 		} else {
-			//for heading label only
-			//push infoButton text into layerObject array for NON-RADIOPARENT Headings
+			
+			//ORIGINAL layersObject.push({layer: "heading", title: layer});
+			
+			//push infoButton text into layerObject array if it exists
 			if (allLayers[layer].wimOptions.infoButton != undefined){
 				var infoButtonText = allLayers[layer].wimOptions.infoButton;
 				layersObject.push({layer: "heading", title: layer, infoButtonText: infoButtonText});
@@ -1193,7 +1080,7 @@ function addAllLayers() {
 	}
 	
 	map.addLayers(layerArray);
-
+	
 	function addToObjects(fullObject, wimOptions) {
 		layersObject.push(fullObject); 
 		if (wimOptions.includeLegend != false) {

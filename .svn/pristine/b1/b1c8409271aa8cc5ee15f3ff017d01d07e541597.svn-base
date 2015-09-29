@@ -45,7 +45,7 @@ html, body {
 	z-index: 1;
 	display: inline;
 	font-family: BryantRegular, "Lucida Sans Unicode", "Lucida Grande", sans-serif ;
-	font-size: 2.5em;  /*Changed from 40px to aid resizing  PeerReviewEdit*/
+	font-size: 40px;
 }
 
 #usgsLogoDiv {
@@ -66,20 +66,6 @@ html, body {
 	padding-top: 10px;
 	font-family: BryantBold,"Lucida Sans Unicode", "Lucida Grande", sans-serif ;
 }
-
-/*add to all apps to help the screen size changes PeerReviewEdit*/
-@media screen and (max-width:1100px){
-	#header{
-		font-size:1.75em;
-	}
-}
-
-@media screen and (max-width:800px){
-	#header{
-		font-size:1.0em;
-	}
-}
-/*END PeerReviewEdit*/
 
 #titleSeparator {
 	color: #F37A49;
@@ -215,7 +201,7 @@ button {
 	border-bottom-left-radius: 5px;
 	-moz-border-bottom-left-radius: 5px;
 	-webkit-border-bottom-left-radius: 5px;
-	width: 290px;
+	width: 270px;
 }
 
 #spacer {
@@ -228,7 +214,7 @@ button {
 	/*left: 0px;
 	bottom: 20px;*/
 	z-index: 2;
-	width: 290px;
+	width: 270px;
 	/*border-top-right-radius: 5px;
 	-moz-border-top-right-radius: 5px;
 	-webkit-border-top-right-radius: 5px;
@@ -261,19 +247,6 @@ button {
 	max-height: 400px;
 	overflow: auto;
 }
-/*BadRiverEdits Edits*/
-@media screen and (max-height:900px){
-	#legend{
-		max-height:200px;
-	}
-}
-
-@media screen and (max-height:600px){
-	#legend{
-		max-height:100px;
-	}
-}
-
 
 #mobileLayers {
 	color: Black;

@@ -1,16 +1,16 @@
-//Copyright 2014 USGS Wisconsin Internet Mapping(WiM)
-//Author: Erik Myers
-//Template Created: May 17th, 2013 by WiM JS Dev Team
+//Copyright 2013 USGS Wisconsin Internet Mapping(WiM)
+//Author: WiM JS Dev Team
+//Created: May 17th, 2013	
 
+//This template has been commented heavily for development purposes. Please delete comments before publishing live mapper code.
+//Below are all the dojo.require statements needed for this template mapper. These statements import esri and dijit out-of-box functionality. At bottom are custom wimjits being included.
+//This list will vary as features are added to mappers and different Dojo, Esri, or WiM tools are used. 
 
 //04.03.2014 - NE - Added new allLayers object with all map layer info. new functions to automate adding of layers and building of available map layers box and explanation. 
 //07.16.2013 - NE - Add functionality for adding icon and execute zoom to scale.
 //06.19.2013 - NE - Updated to create lat/lng scale bar programmatically after map is created and ready.
 //06.18.2013 - TR - Added color style to USGSLinks <a> tags
 //06.03.2013 - ESM - Adds function to build and display usgs links on user logo click
-//12.03.2014 -ESM -  Adds infoButtons and explanation functionality to TOC main layout
-//12.03.2014 -ESM -  Adds all layers and data with descriptions and functionality
-//12.03.2014 -ESM -  Adds identifyTask and custom popup rendering
 
 dojo.require("esri.arcgis.utils");
 dojo.require("esri.dijit.Popup");
@@ -35,7 +35,6 @@ dojo.require("wim.ExtentNav");
 dojo.require("wim.LatLngScale");
 dojo.require("wim.RefreshScreen");
 dojo.require("wim.LinksBox");
-dojo.require("wim.LoadingScreen");
 
 
 //various global variables are set here (Declare here, instantiate below)     
@@ -72,7 +71,6 @@ function init() {
 		slider: true,
 		sliderStyle: "small", //use "small" for compact version, "large" for long slider version
 		logo:false,
-		showAttribution:false,
 		infoWindow: popup
 	});
 	
@@ -333,7 +331,7 @@ function init() {
 				"url": servicesURL,
 				"visibleLayers": [26], 
 				"arcOptions": {
-					"visible": true, 
+					"visible": false, 
 					"opacity": 0.5,
 					"id":"_rch"
 				},
@@ -425,7 +423,7 @@ function init() {
 				"arcOptions": {
 					"visible": false, 
 					"opacity": 0.5,
-					"id":"kzone511"
+					"id":"kzone5.asc"
 				},
 				"wimOptions": {
 					"type": "layer",
@@ -438,7 +436,7 @@ function init() {
 				"arcOptions": {
 					"visible": false, 
 					"opacity": 0.5,
-					"id":"kzone422"
+					"id":"kzone4.asc"
 				},
 				"wimOptions": {
 					"type": "layer",
@@ -451,7 +449,7 @@ function init() {
 				"arcOptions": {
 					"visible": false, 
 					"opacity": 0.5,
-					"id":"kzone311"
+					"id":"kzone3.asc"
 				},
 				"wimOptions": {
 					"type": "layer",
@@ -464,7 +462,7 @@ function init() {
 				"arcOptions": {
 					"visible": false, 
 					"opacity": 0.5,
-					"id":"kzone111"
+					"id":"kzone1.asc"
 				},
 				"wimOptions": {
 					"type": "layer",
@@ -495,7 +493,7 @@ function init() {
 			"wimOptions": {
 				"type":"heading",
 				"includeInLayerList": true,
-				"infoButton": "Each polygon in this feature is a model cell that has a streamflow routing (SFR) boundary condition.  http://pubs.usgs.gov/tm/2006/tm6A13/"
+				"infoButton": "Each polygon in this feature is a model cell that has a streamflow routing (SFR) boundary condition."
 			}
 		}, "Overland flow catchments" : {
 				"url": servicesURL,
@@ -515,7 +513,7 @@ function init() {
 			"wimOptions": {
 				"type":"heading",
 				"includeInLayerList": true,
-				"infoButton": "Each polygon is a catchment derived from NHDPlus. Each catchment was associated with a stream segment (based on which segment had the highest number of reaches within the catchment). All groundwater discharging to the surface in that catchment is routed as overland flow to that stream segment."
+				"infoButton": "Each polygon is a catchment derived from NHDPlus. Each of these catchment was associated with a stream segment (based on which segment had the highest number of reaches within the catchment). All groundwater discharging to the surface in that catchment is routed as overland flow to that stream segment."
 			}
 		}, "Pilot points in layer 1" : {
 				"url": servicesURL,
@@ -555,7 +553,7 @@ function init() {
 			"wimOptions": {
 				"type":"radioParent",
 				"includeInLayerList": true,
-				"infoButton": "Hydraulic conductivity values were interpolated between pilot points within these zones, which indicate major geologic units. The zones in layer 1 are different because they represent surficial glacial deposits. Layer 2 was assigned the same hydraulic conductivity values as layer 1. The zones in layers 3-5 represent major bedrock units; they are only slightly different because of dips in the units (which cause them to be offset between layers).",
+				"infoButton": "Points indicating the location and value of each pilot point in Layer 1.  Layers 3-5 contain multiple overlapping points",
 				"layerOptions": {
 					"selectorType":"radioParent",
 					"radioGroup": "pilotPoint"
@@ -668,7 +666,7 @@ function init() {
 				"type":"radioParent",
 				"includeInLayerList": true,
 				"visible":true,
-				"infoButton": "During model calibration, hydraulic conductivity is estimated at each pilot point. Each model cell is then populated with a hydraulic conductivity value by interpolation between pilot points. The estimation of K at the pilot point[s] is based on the fit between simulated and observed baseflows and water levels (K is adjusted to achieve the best fit). Identifiability measures the extent to which an individual pilot point is 'informed' by nearby observations. Pilot points that are well informed have an identifiabilitiy of 1.0. Values near zero indicate pilot points that do not have a significant effect on model results at the observation locations, and therefore cannot be informed by model fit.",
+				"infoButton": "During model calibration, hydraulic conductivity is estimated at each pilot point. Each model cell is then populated with a hydraulic conductivity value by interpolation between pilot points. The estimation of K at the pilot points is based on the fit between model results and observed baseflows and water levels (K is adjusted to achieve the best fit). Identifiability measures the extent to which an individual pilot point is 'informed' by nearby observations. Pilot points that are well informed have an identifiabilitiy of 1.0. Values near zero indicate pilot points that do not have a significant effect on model results at the observation locations, and therefore cannot be informed by model fit.",
 				"layerOptions": {
 					"selectorType":"radioParent",
 					"radioGroup": "pilotPointIdent",
@@ -752,7 +750,7 @@ function init() {
 					dojo.setStyle(toggleDiv, "paddingLeft", "15px");
 					//TESTING
 					if(layer.infoButtonText){
-						var infoButton = dojo.create('div', {innerHTML: '<img class="infoButton" title="Layer Group Explanation" src="images/infoGraphic.png" />'}, toggleDiv); //WORKS to add HTML div
+						var infoButton = dojo.create('div', {innerHTML: '<img class="infoButton" title="Layer Group Explanation" style="height: 15px; width:15px; cursor:pointer;" src="images/infoGraphic.png" />'}, toggleDiv); //WORKS to add HTML div
 						dojo.setStyle(infoButton, "float", "right");
 						dojo.connect(infoButton, "onclick", function(evt){
 
@@ -843,7 +841,7 @@ function init() {
 						var scale = allLayers[layerName].wimOptions.zoomScale;
 						var zoomImage = dojo.doc.createElement("div");
 						zoomImage.id = 'zoom' + layer.layer.id;
-						zoomImage.innerHTML = '<img id="zoomImage" title="zoom to visible scale" style="height: 18px;width: 18px; cursor: pointer" src="images/zoom.gif" />';
+						zoomImage.innerHTML = '<img id="zoomImage" title="zoom to visible scale" style="height: 18px;width: 18px" src="images/zoom.gif" />';
 						dojo.connect(zoomImage, "click", function() {
 							if (map.getScale() > scale) {
 								map.setScale(scale);;
@@ -924,7 +922,6 @@ function init() {
 			$("#legendDiv").show();
 		}, 1000);
 		
-
 	});
 	
 	addAllLayers();
@@ -937,7 +934,7 @@ function init() {
 	identifyParams = new esri.tasks.IdentifyParameters();
     identifyParams.tolerance = 8;
     identifyParams.returnGeometry = true;
-    identifyParams.layerIds = visibleLayers;
+    //identifyParams.layerIds = visibleLayers;
     identifyParams.layerOption = esri.tasks.IdentifyParameters.LAYER_OPTION_VISIBLE;
     identifyParams.width  = map.width;
     identifyParams.height = map.height;
@@ -1083,26 +1080,6 @@ function mapReady(map){
 	//Sets the globe button on the extent nav tool to reset extent to the initial extent.
 	dijit.byId("extentSelector").set("initExtent", map.extent);  
 	
-	dojo.style('loadingScreen', 'opacity', '0.75');
-	var loadingUpdate = dojo.connect(map, 'onUpdateStart', function(){
-		dojo.style('loadingScreen', 'visibility', 'visible');
-	});
-
-	dojo.connect(map,"onUpdateEnd",function(){
-		//commented out because of DropDown loading-- look at AllDone()
-		dojo.style('loadingScreen', 'visibility', 'hidden');
-		dojo.disconnect(loadingUpdate);
-	
-		dojo.connect(map, "onUpdateStart",function(){
-			dojo.style('refreshScreen', 'visibility', 'visible');
-		});
-		
-		dojo.connect(map, "onUpdateEnd", function(){
-			dojo.style('refreshScreen', 'visibility', 'hidden');
-		});
-	
-	});
-
 	//Create scale bar programmatically because there are some event listeners that can't be set until the map is created.
 	//Just uses a simple div with id "latLngScaleBar" to contain it
 	var latLngBar = new wim.LatLngScale({map: map}, 'latLngScaleBar');

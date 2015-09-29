@@ -1,0 +1,14 @@
+<div data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="design:'sidebar', gutters:true, liveSplitters:true" class="${baseClass}Root">
+		<div id="${baseClass}Content" data-dojo-attach-point="containerNode" data-dojo-type="dijit.layout.ContentPane">
+			<!--<div class="${baseClass}Inner" data-dojo-type="dijit.layout.TabContainer" data-dojo-attach-point="tabsNode" >
+				<div data-dojo-type="dijit/layout/ContentPane" id="${baseClass}TabOne" title="Tab1">content1</div>
+				<div data-dojo-type="dijit/layout/ContentPane" id="${baseClass}TabTwo" title='Tab2'>content2</div>
+				<div data-dojo-type="dijit/layout/ContentPane" id="${baseClass}TabThree" title='Tab3'>content3</div>
+			</div>-->
+		</div>
+
+	<div class="${baseClass}Logo" title="Click to view additional information" data-dojo-attach-event="ondijitclick:_onLogoClick"> 
+		<img id="logoImage" src="wim/images/USGSWhiteOnGreen.gif" alt="USGS Logo" style="cursor:pointer"/>
+	</div>
+
+</div>
