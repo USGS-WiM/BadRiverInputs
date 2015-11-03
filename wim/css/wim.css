@@ -318,7 +318,7 @@
 	z-index:2;
 }
 
-.esriLegendLayerLabel{
+.esriLegendLeft > .esriLegendLayerLabel{
 	visibility:collapse;
 }
 
@@ -387,4 +387,9 @@
 
 #linksBoxDiv contentPane{
 	border-radius: none;
+}
+
+/*removes 'Zoom To' link in the esri infoWindow*/
+.actionList{
+	display:none;
 }

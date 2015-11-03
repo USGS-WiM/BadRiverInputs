@@ -340,7 +340,7 @@ function init() {
 				"wimOptions": {
 					"type": "layer",
 					"includeInLayerList": true,
-					"esriLegendLabel": false
+					"esriLegendLabel": false,
 				}
 		}, "Recharge (in./yr.)": {
 			"wimOptions": {
@@ -482,7 +482,7 @@ function init() {
 				"visibleLayers": [13], 
 				"arcOptions": {
 					"visible": false, 
-					"opacity": 0.5,
+					"opacity": 0.90,
 					"id":"BR_SFR_with_WI_hydro"
 				},
 				"wimOptions": {
@@ -497,7 +497,7 @@ function init() {
 				"includeInLayerList": true,
 				"infoButton": "Each polygon in this feature is a model cell that has a streamflow routing (SFR) boundary condition.  http://pubs.usgs.gov/tm/2006/tm6A13/"
 			}
-		}, "Overland flow catchments" : {
+		}, "Catchments for groundwater discharge" : {
 				"url": servicesURL,
 				"visibleLayers": [11], 
 				"arcOptions": {
@@ -511,11 +511,11 @@ function init() {
 					"esriLegendLabel": false
 				}
 
-		}, "Overland Flow": {
+		}, "Groundwater discharge simulated by UZF package": {
 			"wimOptions": {
 				"type":"heading",
 				"includeInLayerList": true,
-				"infoButton": "Each polygon is a catchment derived from NHDPlus. Each catchment was associated with a stream segment (based on which segment had the highest number of reaches within the catchment). All groundwater discharging to the surface in that catchment is routed as overland flow to that stream segment."
+				"infoButton": "Each polygon is a catchment derived from NHDPlus. Each catchment was associated with a stream segment (based on which segment had the highest number of reaches within the catchment). All groundwater discharging to the surface in that catchment is routed to that stream segment. Discharge simulated by the UZF package is shown on a cell-by-cell basis in the “Groundwater discharge simulated by UZF package” layer in the Results mapper. Routed discharge from the UZF package is displayed for each stream reach is also displayed in the Results mapper, in the “Groundwater discharge from UZF package” layer under the “Streamflow Results” section."
 			}
 		}, "Pilot points in layer 1" : {
 				"url": servicesURL,
@@ -650,7 +650,7 @@ function init() {
 				"url": servicesURL,
 				"visibleLayers": [1], 
 				"arcOptions": {
-					"visible": true, 
+					"visible": false, 
 					"opacity": 0.85,
 					"id":"identifiability_L1kh"
 				},
@@ -667,12 +667,12 @@ function init() {
 			"wimOptions": {
 				"type":"radioParent",
 				"includeInLayerList": true,
-				"visible":true,
+				"visible":false,
 				"infoButton": "During model calibration, hydraulic conductivity is estimated at each pilot point. Each model cell is then populated with a hydraulic conductivity value by interpolation between pilot points. The estimation of K at the pilot point[s] is based on the fit between simulated and observed baseflows and water levels (K is adjusted to achieve the best fit). Identifiability measures the extent to which an individual pilot point is 'informed' by nearby observations. Pilot points that are well informed have an identifiabilitiy of 1.0. Values near zero indicate pilot points that do not have a significant effect on model results at the observation locations, and therefore cannot be informed by model fit.",
 				"layerOptions": {
 					"selectorType":"radioParent",
 					"radioGroup": "pilotPointIdent",
-					"checked": true
+					"checked": false
 				},
 			}
 		}	
@@ -918,7 +918,7 @@ function init() {
 						if (allLayers[layer].wimOptions.esriLegendLabel !== undefined && allLayers[layer].wimOptions.esriLegendLabel == false) {
 							$('#'+item.id+' table.esriLegendLayerLabel').remove();
 						}
-					}
+					}	
 				}
 			});
 			$("#legendDiv").show();
@@ -937,7 +937,7 @@ function init() {
 	identifyParams = new esri.tasks.IdentifyParameters();
     identifyParams.tolerance = 8;
     identifyParams.returnGeometry = true;
-    identifyParams.layerIds = visibleLayers;
+    //identifyParams.layerIds = visibleLayers;
     identifyParams.layerOption = esri.tasks.IdentifyParameters.LAYER_OPTION_VISIBLE;
     identifyParams.width  = map.width;
     identifyParams.height = map.height;
@@ -960,7 +960,9 @@ function init() {
 
     	//loop through to find only the currently visible spatial layers
     	for (var i = 0; i < layersOnly.length; i++){
-    		if (map.getLayer(layersOnly[i].name).visible == true){
+    		//var layerVis = map.getLayer(layersOnly[i].name).visible;
+    		//if (map.getLayer(layersOnly[i].name).visible == true){
+    		if ((map.getLayer(layersOnly[i].name) != undefined) && (map.getLayer(layersOnly[i].name).visible == true)){
     			visibleLayers.push(layersOnly[i].id);  //visible spatial layers only
     		} else{
     			continue;
