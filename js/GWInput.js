@@ -149,7 +149,7 @@ function init() {
 					"includeInLayerList": true,
 					"esriLegendLabel": false
 				}
-		}, "Vertical Hydraulic Condutivity (log ft./day)": {
+		}, "Vertical Hydraulic Conductivity (log ft./day)": {
 			"wimOptions": {
 				"type":"heading",
 				"includeInLayerList": true,
@@ -207,7 +207,7 @@ function init() {
 					"includeInLayerList": true,
 					"esriLegendLabel": false
 				}
-		}, "Horizontal Hydraulic Condutivity (log ft./day)": {
+		}, "Horizontal Hydraulic Conductivity (log ft./day)": {
 			"wimOptions": {
 				"type":"heading",
 				"includeInLayerList": true,
@@ -265,7 +265,7 @@ function init() {
 					"includeInLayerList": true,
 					"esriLegendLabel": false
 				}
-		}, "Vertical Hydraulic Condutivity (ft./day)": {
+		}, "Vertical Hydraulic Conductivity (ft./day)": {
 			"wimOptions": {
 				"type":"heading",
 				"includeInLayerList": true,
@@ -323,7 +323,7 @@ function init() {
 					"includeInLayerList": true,
 					"esriLegendLabel": false
 				}
-		}, "Horizontal Hydraulic Condutivity (ft./day)": {
+		}, "Horizontal Hydraulic Conductivity (ft./day)": {
 			"wimOptions": {
 				"type":"heading",
 				"includeInLayerList": true,
@@ -668,7 +668,7 @@ function init() {
 				"type":"radioParent",
 				"includeInLayerList": true,
 				"visible":false,
-				"infoButton": "During model calibration, hydraulic conductivity is estimated at each pilot point. Each model cell is then populated with a hydraulic conductivity value by interpolation between pilot points. The estimation of K at the pilot point[s] is based on the fit between simulated and observed baseflows and water levels (K is adjusted to achieve the best fit). Identifiability measures the extent to which an individual pilot point is 'informed' by nearby observations. Pilot points that are well informed have an identifiabilitiy of 1.0. Values near zero indicate pilot points that do not have a significant effect on model results at the observation locations, and therefore cannot be informed by model fit.",
+				"infoButton": "During model calibration, hydraulic conductivity is estimated at each pilot point. Each model cell is then populated with a hydraulic conductivity value by interpolation between pilot points. The estimation of K at the pilot point[s] is based on the fit between simulated and observed baseflows and water levels (K is adjusted to achieve the best fit). Identifiability measures the extent to which an individual pilot point is 'informed' by nearby observations. Pilot points that are well informed have an identifiability of 1.0. Values near zero indicate pilot points that do not have a significant effect on model results at the observation locations, and therefore cannot be informed by model fit.",
 				"layerOptions": {
 					"selectorType":"radioParent",
 					"radioGroup": "pilotPointIdent",
