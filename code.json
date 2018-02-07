@@ -1,0 +1,46 @@
+[
+  {
+    "name": "BadRiverInputs",
+    "organization": "U.S. Geological Survey",
+    "description": "Show inputs for the Bad River Groundwater Model Mapper",
+    "version": "v0.0.0",
+    "status": "Production"
+
+    "permissions": {
+      "usageType": "openSource",
+      "licenses": [
+        {
+          "name": "Public Domain",
+          "URL": "https://github.com/USGS-WiM/BadRiverInputs/blob/master/LICENSE.md"
+        }
+      ]
+    },
+
+    "homepageURL": "https://wim.usgs.gov/badriver/inputs/index.html",
+    "downloadURL": "https://github.com/USGS-WiM/BadRiverInputs.git",
+    "disclaimerURL": "https://github.com/USGS-WiM/BadRiverInputs/blob/master/LICENSE.md",
+    "repositoryUrl": "https://github.com/USGS-WiM/BadRiverInputs",
+    "vcs": "git",
+
+    "laborHours": null,
+
+    "tags": [
+      "Bad River",
+      "groundwater",
+      "inputs"
+    ],
+
+    "languages": [
+      "javascript"
+    ],
+
+    "contact": {
+      "name": "Erik Myers",
+      "email": "emyers@usgs.gov"
+    },
+
+    "date": {
+      "metadataLastUpdated": "2018-02-07"
+    }
+  }
+]
