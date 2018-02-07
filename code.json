@@ -17,7 +17,7 @@
     },
 
     "homepageURL": "https://wim.usgs.gov/badriver/inputs/index.html",
-    "downloadURL": "https://github.com/USGS-WiM/BadRiverInputs.git",
+    "downloadURL": "https://github.com/USGS-WiM/BadRiverInputs/archive/master.zip",
     "disclaimerURL": "https://github.com/USGS-WiM/BadRiverInputs/blob/master/LICENSE.md",
     "repositoryUrl": "https://github.com/USGS-WiM/BadRiverInputs",
     "vcs": "git",
