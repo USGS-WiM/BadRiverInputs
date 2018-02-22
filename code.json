@@ -4,7 +4,7 @@
     "organization": "U.S. Geological Survey",
     "description": "Show inputs for the Bad River Groundwater Model Mapper",
     "version": "v0.0.0",
-    "status": "Production"
+    "status": "Production",
 
     "permissions": {
       "usageType": "openSource",
