@@ -49,7 +49,7 @@ var locator;
 var layerInfos;
 
 var servicesURL =
-  "https://wim.usgs.gov/arcgis/rest/services/BadRiver/INPUTS/MapServer/";
+  "https://gis1.wim.usgs.gov/server/rest/services/BadRiver/INPUTS/MapServer";
 
 function init() {
   //sets up the onClick listener for the USGS logo
